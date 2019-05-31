@@ -415,9 +415,9 @@ int main(int argc, char **argv)
 		  pair_part.insert(newpairs[machine_i]);
 
 	  }
-	  for (it = pair_part.begin(); it != pair_part.end(); it++) {
-		  printf("%d %d\n", it->first, it->second);
-	  }
+	  //for (it = pair_part.begin(); it != pair_part.end(); it++) {
+	//	  printf("%d %d\n", it->first, it->second);
+	  //}
 
       // Photometric matching of putative pairs
       collectionMatcher->Match(regions_provider, pair_part, map_PutativesMatches, &progress);          //match Cascade_Hashing_Matcher_Regions.cpp
