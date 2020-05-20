@@ -62,7 +62,15 @@ exportToPly
 inline bool exportToPly
 (
   const std::vector<Vec3> & vec_points,
-  const std::vector<Vec3> & vec_camPos,
+  const std::vector<Vec3>& black_camPos1,
+  const std::vector<Vec3>& vec_camPos1,
+  const std::vector<Vec3>& vec_camPos2,
+  const std::vector<Vec3>& vec_camPos3,
+  const std::vector<Vec3>& vec_camPos4,
+  const std::vector<Vec3>& vec_camPos5,
+  const std::vector<Vec3>& vec_camPos6,
+  const std::vector<Vec3>& vec_camPos7,
+  const std::vector<Vec3>& vec_camPos8,
   const std::string & sFileName,
   const std::vector<Vec3> * vec_coloredPoints = nullptr
 )
@@ -73,7 +81,7 @@ inline bool exportToPly
 
   outfile << "ply"
     << '\n' << "format ascii 1.0"
-    << '\n' << "element vertex " << vec_points.size()+vec_camPos.size()
+    << '\n' << "element vertex " << vec_points.size()+ black_camPos1.size() + vec_camPos1.size()+ vec_camPos2.size()+ vec_camPos3.size()+ vec_camPos4.size()+ vec_camPos5.size()+ vec_camPos6.size()+ vec_camPos7.size()+ vec_camPos8.size()
     << '\n' << "property double x"
     << '\n' << "property double y"
     << '\n' << "property double z"
@@ -102,13 +110,78 @@ inline bool exportToPly
         << "\n";
   }
 
-  for (size_t i=0; i < vec_camPos.size(); ++i)  {
+  for (size_t i = 0; i < black_camPos1.size(); ++i) {
+	  outfile
+		  << black_camPos1[i](0) << ' '
+		  << black_camPos1[i](1) << ' '
+		  << black_camPos1[i](2) << ' '
+		  << "0 0 0\n";
+  }
+
+  for (size_t i=0; i < vec_camPos1.size(); ++i)  {
     outfile
-      << vec_camPos[i](0) << ' '
-      << vec_camPos[i](1) << ' '
-      << vec_camPos[i](2) << ' '
+      << vec_camPos1[i](0) << ' '
+      << vec_camPos1[i](1) << ' '
+      << vec_camPos1[i](2) << ' '
       << "0 255 0\n";
   }
+
+  for (size_t i = 0; i < vec_camPos2.size(); ++i) {
+	  outfile
+		  << vec_camPos2[i](0) << ' '
+		  << vec_camPos2[i](1) << ' '
+		  << vec_camPos2[i](2) << ' '
+		  << "0 0 255\n";
+  }
+
+  for (size_t i = 0; i < vec_camPos3.size(); ++i) {
+	  outfile
+		  << vec_camPos3[i](0) << ' '
+		  << vec_camPos3[i](1) << ' '
+		  << vec_camPos3[i](2) << ' '
+		  << "255 0 0\n";
+  }
+
+  for (size_t i = 0; i < vec_camPos4.size(); ++i) {
+	  outfile
+		  << vec_camPos4[i](0) << ' '
+		  << vec_camPos4[i](1) << ' '
+		  << vec_camPos4[i](2) << ' '
+		  << "144 52 190\n";
+  }
+
+  for (size_t i = 0; i < vec_camPos5.size(); ++i) {
+	  outfile
+		  << vec_camPos5[i](0) << ' '
+		  << vec_camPos5[i](1) << ' '
+		  << vec_camPos5[i](2) << ' '
+		  << "158 251 162\n";
+  }
+
+  for (size_t i = 0; i < vec_camPos6.size(); ++i) {
+	  outfile
+		  << vec_camPos6[i](0) << ' '
+		  << vec_camPos6[i](1) << ' '
+		  << vec_camPos6[i](2) << ' '
+		  << "112 160 163\n";
+  }
+
+  for (size_t i = 0; i < vec_camPos7.size(); ++i) {
+	  outfile
+		  << vec_camPos7[i](0) << ' '
+		  << vec_camPos7[i](1) << ' '
+		  << vec_camPos7[i](2) << ' '
+		  << "217 158 17\n";
+  }
+
+  for (size_t i = 0; i < vec_camPos8.size(); ++i) {
+	  outfile
+		  << vec_camPos8[i](0) << ' '
+		  << vec_camPos8[i](1) << ' '
+		  << vec_camPos8[i](2) << ' '
+		  << "238 93 185\n";
+  }
+
   outfile.flush();
   const bool bOk = outfile.good();
   outfile.close();
