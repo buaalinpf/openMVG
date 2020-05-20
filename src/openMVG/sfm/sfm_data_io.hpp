@@ -15,31 +15,43 @@
 #include "openMVG/types.hpp"
 
 namespace openMVG {
-namespace sfm {
+	namespace sfm {
 
-struct SfM_Data;
+		struct SfM_Data;
 
-enum ESfM_Data
-{
-  // Note: Use power of two values in order to use bitwise operators.
-  VIEWS           =  1,
-  EXTRINSICS      =  2,
-  INTRINSICS      =  4,
-  STRUCTURE       =  8,
-  CONTROL_POINTS  = 16,
-  ALL = VIEWS | EXTRINSICS | INTRINSICS | STRUCTURE | CONTROL_POINTS
-};
+		enum ESfM_Data
+		{
+			// Note: Use power of two values in order to use bitwise operators.
+			VIEWS = 1,
+			EXTRINSICS = 2,
+			INTRINSICS = 4,
+			STRUCTURE = 8,
+			CONTROL_POINTS = 16,
+			ALL = VIEWS | EXTRINSICS | INTRINSICS | STRUCTURE | CONTROL_POINTS
+		};
 
-///Check that each pose have a valid intrinsic and pose id in the existing View ids
-bool ValidIds(const SfM_Data & sfm_data, ESfM_Data flags_part);
+		///Check that each pose have a valid intrinsic and pose id in the existing View ids
+		bool ValidIds(const SfM_Data& sfm_data, ESfM_Data flags_part);
 
-/// Load SfM_Data SfM scene from a file
-bool Load(SfM_Data & sfm_data, const std::string & filename, ESfM_Data flags_part);
+		/// Load SfM_Data SfM scene from a file
+		bool Load(SfM_Data& sfm_data, const std::string& filename, ESfM_Data flags_part);
 
-/// Save SfM_Data SfM scene to a file
-bool Save(const SfM_Data & sfm_data, const std::string & filename, ESfM_Data flags_part);
+		/// Save SfM_Data SfM scene to a file
+		bool Save(const SfM_Data& sfm_data, const std::string& filename, ESfM_Data flags_part);
 
-} // namespace sfm
+		bool Save(const SfM_Data& sfm_data,
+			const SfM_Data& sfm_data1,
+			const SfM_Data& sfm_data2,
+			const SfM_Data& sfm_data3,
+			const SfM_Data& sfm_data4,
+			const SfM_Data& sfm_data5,
+			const SfM_Data& sfm_data6,
+			const SfM_Data& sfm_data7,
+			const SfM_Data& sfm_data8,
+			const std::string& filename,
+			ESfM_Data flags_part);
+
+	} // namespace sfm
 } // namespace openMVG
 
 #endif // OPENMVG_SFM_SFM_DATA_IO_HPP
